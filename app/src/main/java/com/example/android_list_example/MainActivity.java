@@ -3,8 +3,14 @@ package com.example.android_list_example;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,11 +21,27 @@ public class MainActivity extends AppCompatActivity {
 
         ListView listView = findViewById(R.id.listVw);
 
-        String[] colors = {"Blue", "Red", "Green", "Black", "Yellow"};
+        final String[] colors = {"Blue", "Red", "Green", "Black", "Yellow"};
 
         ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, R.layout.list_item, colors);
 
         listView.setAdapter(adapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Log.d("CLICK", "click");
+                Log.d("CLICK PARENT", parent.toString());
+                Log.d("CLICK VIEW", view.toString());
+                Log.d("CLICK POS", position+"");
+                Log.d("CLICK ID", id+"");
+
+                TextView txtVw_color = (TextView) view;
+
+                Log.d("CLICK", colors[position]);
+                Log.d("CLICK", txtVw_color.getText().toString());
+            }
+        });
 
 
     }
