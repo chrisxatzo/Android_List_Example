@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         final String[] colors = {"Blue", "Red", "Green", "Black", "Yellow"};
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, R.layout.list_item, colors);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, R.layout.list_item, R.id.txtVw_color, colors);
 
         listView.setAdapter(adapter);
 
@@ -36,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("CLICK POS", position+"");
                 Log.d("CLICK ID", id+"");
 
-                TextView txtVw_color = (TextView) view;
+                TextView txtVw_color = view.findViewById(R.id.txtVw_color);
 
                 Log.d("CLICK", colors[position]);
                 Log.d("CLICK", txtVw_color.getText().toString());
